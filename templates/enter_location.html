@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+
+{% block content1 %}
+
+
+
+<h1>Search for Places to Visit</h1>
+<p>Use the following form to search for businesses and places to visit when you travel to a new location</p>
+
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>{{ message }}</strong>
+{% endfor %}
+</div>
+
+
+<form action="{{ url_for('enter_location') }}" method="POST">
+	<br> <br>
+    <strong>{{ form.location.label() }}</strong> {{ form.location() }}<br>
+    <strong>{{ form.query.label() }} </strong>  {{ form.query() }}<br>
+    <strong>{{ form.max_money.label() }}</strong>   {{ form.max_money() }}<br>
+    <strong>{{ form.num_results.label() }} </strong>   {{ form.num_results() }}<br>
+    {{ form.submit() }}
+    {{ form.hidden_tag() }}
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block content1 %}
+
+<h1>Names Visited</h1>
+
+<div>
+	{% for message in get_flashed_messages() %}
+		<strong> {{ message }}</strong>
+	{% endfor %}
+</div>
+
+{% for n in names %}
+	<ul>
+		<li>
+    		<p>{{ n }}</p>
+		</li>
+	</ul>
+{% endfor %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+<h1>Yelp Results</h1>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% if not items %}
+There are no results to show.
+{% endif %}
+
+
+{% if items %}
+	<form action="{{ url_for('add_to_database') }}" method="GET">
+	{% for n in items %}
+	    <tr>
+	    	<ul>
+	    		<li>
+	    			<p> <strong>{{ n[0] }}</strong> <br><i>{{ n[1] }} <br><strong>Price:</strong> {{ n[2] }}<br> <strong>Rating:</strong> {{ n[3] }}</i> </p>
+				</li>
+			</ul>
+	    </tr>
+	{% endfor %}
+
+	<p> Please select which places you want to visit</p>
+		{{ form.select() }}
+		{{ form.submit() }}
+
+{% endif %}
+
+
+{% endblock %}
+

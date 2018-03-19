@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% block content1 %}
+
+<h1>Cities to Visit</h1>
+
+<h2>Click on a city to view the places you want to visit</h2>
+
+{% if not cities %}
+	You do not have any stored cities.
+{% endif %}
+
+
+{% if cities %}
+	{% for n in cities %}
+		<form action = '/view/{{ n }}' method = 'GET'>
+			<input type="radio" name ="city" value = "{{ n }}" <p> {{ n }} </p> 
+			<br><br>
+
+	{% endfor %}
+	<input type="submit" name="submit" value = 'Go'>
+	</form>
+{% endif %}
+
+
+
+<div>
+{% for message in get_flashed_messages() %}
+	{{ message }}
+{% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+{% block content1 %}
+
+<h1>{{ city }}</h1>
+
+<a href="{{ url_for('view_all_cities') }}">Return to view all cities</a><br>
+
+{% for n in locations %}
+	<ul>
+		<li>
+			<strong>{{ n[0] }}  </strong> 
+			<br> <i><strong>Address</strong> {{ n[1] }} 
+			<br><strong> Price:</strong> {{ n[2] }} 
+			<br><strong> Rating:</strong> {{ n[3] }} </i> 
+			<br><br>
+		</li>
+	</ul>
+
+{% endfor %}
+
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+
+{% endblock %}
+
+
